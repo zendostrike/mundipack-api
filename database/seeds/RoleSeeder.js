@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| PackageSeeder
+| RoleSeeder
 |--------------------------------------------------------------------------
 |
 | Make use of the Factory instance to seed database with dummy data or
@@ -13,13 +13,19 @@
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use("Factory");
 
-class PackageSeeder {
+class RoleSeeder {
   async run() {
-    const packagesArray = await Factory.model("App/Models/Package").createMany(
-      32
-    );
-    console.log(packagesArray);
+    const adminRole = await Factory.model("App/Models/Role").create({
+      name: "admin"
+    });
+
+    const clientRole = await Factory.model("App/Models/Role").create({
+      name: "client"
+    });
+
+    console.log(adminRole);
+    console.log(clientRole);
   }
 }
 
-module.exports = PackageSeeder;
+module.exports = RoleSeeder;

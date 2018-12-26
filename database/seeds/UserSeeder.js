@@ -15,8 +15,16 @@ const Factory = use("Factory");
 
 class UserSeeder {
   async run() {
-    const usersArray = await Factory.model("App/Models/User").createMany(5);
-    console.log(usersArray);
+    const adminUser = await Factory.model("App/Models/User").create({
+      role_id: 1
+    });
+
+    const clientUser = await Factory.model("App/Models/User").create({
+      role_id: 2
+    });
+
+    console.log(adminUser);
+    console.log(clientUser);
   }
 }
 

@@ -16,16 +16,23 @@ var slugify = require("slugify");
 const Factory = use("Factory");
 const Hash = use("Hash");
 
-Factory.blueprint("App/Models/User", async faker => {
+Factory.blueprint("App/Models/Role", async (faker, i, data) => {
+  return {
+    name: data.name
+  };
+});
+
+Factory.blueprint("App/Models/User", async (faker, i, data) => {
   return {
     username: faker.username(),
     email: faker.email(),
+    role_id: data.role_id,
     password: await Hash.make(faker.password())
   };
 });
 
 Factory.blueprint("App/Models/Package", faker => {
-  var packageName = faker.sentence({ words: 3 });
+  var packageName = `${faker.word()} ${faker.word()}`;
   return {
     name: packageName,
     slug: slugify(packageName),
