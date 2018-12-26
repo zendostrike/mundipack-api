@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
+    "dev": "nodemon --watch app --harmony_proxies server.js",
     "test": "node ace test",
     "commit": "npx git-cz"
   },

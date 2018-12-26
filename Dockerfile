@@ -13,4 +13,4 @@ RUN npm install
 # 7. Copy the rest into directory
 COPY . /app
 # 8. Start the app inside the container
-CMD ["npm", "start"]
+CMD ["npm", "dev"]
