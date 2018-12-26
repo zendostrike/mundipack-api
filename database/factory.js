@@ -11,6 +11,7 @@
 |
 */
 var slugify = require("slugify");
+var capitalize = require("capitalize");
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use("Factory");
@@ -34,11 +35,11 @@ Factory.blueprint("App/Models/User", async (faker, i, data) => {
 Factory.blueprint("App/Models/Package", faker => {
   var packageName = `${faker.word()} ${faker.word()}`;
   return {
-    name: packageName,
+    name: capitalize(packageName),
     slug: slugify(packageName),
     days: faker.integer({ min: 0, max: 30 }),
     photo: faker.avatar(),
     price: faker.floating({ min: 0, max: 3000, fixed: 2 }),
-    airline: faker.word()
+    airline: capitalize(faker.word())
   };
 });
